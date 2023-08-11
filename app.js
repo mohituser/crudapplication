@@ -17,6 +17,6 @@ app.use(express.static(path.join(__dirname,"/views")));
 app.use("/Quotesgen",user);
 app.use("*",(req,res)=>{
 res.render("index")
-})
+});
 
 module.exports=app;
