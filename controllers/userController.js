@@ -178,7 +178,7 @@ exports.signup=async(req,res,next)=>{
         
             }
 
- cron.schedule("0 45 * * *",()=>{
+ cron.schedule("1 10 * * *",()=>{
                 console.log("hi i am running...........")
                 this.fetchUser();
      })
