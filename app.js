@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname,"/views")));
 app.use("/Quotesgen",user);
 app.use("*",(req,res)=>{
-  res.redirect(")
+res.render("index")
 })
 
 module.exports=app;
