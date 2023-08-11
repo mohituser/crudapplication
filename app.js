@@ -15,5 +15,8 @@ app.use(cookieParser());
 // console.log(path.join(__dirname,"/views/css"))
 app.use(express.static(path.join(__dirname,"/views")));
 app.use("/Quotesgen",user);
+app.use("*",(req,res)=>{
+  res.redirect(")
+})
 
 module.exports=app;
