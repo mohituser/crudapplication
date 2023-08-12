@@ -17,7 +17,7 @@ exports.loginpage=(req,res,next)=>{
             res.render("forgotpass");
             }    
 exports.signup=async(req,res,next)=>{
-    console.log(req.body.name);
+    
     try {
         const {name , email, password}=req.body; 
     // let result; 
@@ -27,7 +27,7 @@ exports.signup=async(req,res,next)=>{
         email,
         password,
     });
-    console.log(user);
+    // console.log(user);
     const token = user.getJwtToken();
     const option={
         expires:new Date(
@@ -88,7 +88,7 @@ exports.signup=async(req,res,next)=>{
             const forgotToken=user.getForgotPasswordToken();
          
             await user.save({validateBeforeSave:false});
-            console.log(user);
+            // console.log(user);
             const myUrl=`${req.protocol}://${req.get("host")}/Quotesgen/password/reset/${forgotToken}`;
             const message=`copy paste this link in your url and hit the enter/n/n ${myUrl}`;
             try {
@@ -114,7 +114,7 @@ exports.signup=async(req,res,next)=>{
          }
          exports.resetpass=async(req,res,next)=>{
             const forgotPasswordToken=req.params.token;
-            console.log(forgotPasswordToken);
+            // console.log(forgotPasswordToken);
             const user=await User.findOne(
              {
                  forgotPasswordToken,
@@ -135,7 +135,7 @@ exports.signup=async(req,res,next)=>{
                 {
                     forgotPasswordToken,
             });
-            console.log(forgotPasswordToken);
+            // console.log(forgotPasswordToken);
 
              if(req.body.password!==req.body.confirmPassword){
                 //  return next(new customError("password and confirm is not matched",400));   
@@ -178,12 +178,12 @@ exports.signup=async(req,res,next)=>{
         
             }
 
- cron.schedule("1 10 * * *",()=>{
-                console.log("hi i am running...........")
+ cron.schedule("20 10 * * *",()=>{
+                // console.log("hi i am running...........")
                 this.fetchUser();
      })
      exports.checks=()=>{
-        console.log("MOHIT i am running. ..22222 ..........")
+        // console.log("MOHIT i am running. ..22222 ..........")
      }
 exports.fetchUser=async()=>{
   const result=await User.find();
@@ -218,7 +218,7 @@ exports.fetchUser=async()=>{
   result.forEach((ele)=>{
     // console.log(ele.email);
     let x = Math.floor((Math.random() * quotes.length) + 1);
-console.log(x);
+// console.log(x);
     const options={
         email:ele.email,
         quotes:quotes[x].quote,
@@ -227,7 +227,7 @@ console.log(x);
    
 })
 // res.send("mail is sent succefully");
-console.log("mail is sent succefully");
+// console.log("mail is sent succefully");
 
 
 }
